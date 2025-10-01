@@ -1,0 +1,38 @@
+# Node / Next.js
+node_modules/
+.next/
+.out/
+.vercel/
+dist/
+
+# Env
+.env
+*.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Mac / Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.envrc
+
+# Docker
+*.pid
+
+# Dist caches
+.cache/
+
+# Qdrant / Postgres volumes (if any are mounted locally)
+qdrant_storage/
+postgres_data/
