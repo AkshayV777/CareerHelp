@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { Server } from '@modelcontextprotocol/sdk/server';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/transports/stdio';
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { fetch } from 'undici';
 
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8000';
@@ -30,7 +30,7 @@ async function main() {
   );
 
   // resume_ingest: { text } -> { skills: string[] }
-  server.tool(
+  (server as any).tool(
     'resume_ingest',
     {
       description: 'Extract skills from a resume text via backend /ingest/resume',
@@ -51,7 +51,7 @@ async function main() {
   );
 
   // match_jobs: { skills: string[], top_k?: number } -> MatchResult[]
-  server.tool(
+  (server as any).tool(
     'match_jobs',
     {
       description: 'Get job matches for a set of skills via backend /match/jobs',
@@ -72,7 +72,7 @@ async function main() {
   );
 
   // planner_roadmap: { skills: string[] } -> { plan: ... }
-  server.tool(
+  (server as any).tool(
     'planner_roadmap',
     {
       description: 'Generate a learning roadmap via backend /planner/roadmap',
@@ -90,7 +90,7 @@ async function main() {
   );
 
   // qa_ask: { question } -> { answer, citations }
-  server.tool(
+  (server as any).tool(
     'qa_ask',
     {
       description: 'Ask a question via backend /qa/ask',
@@ -108,7 +108,7 @@ async function main() {
   );
 
   // Health check tool
-  server.tool(
+  (server as any).tool(
     'health',
     {
       description: 'Check backend health at /health',
